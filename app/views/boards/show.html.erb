@@ -5,5 +5,11 @@
   <%= @board.name %>
 </p>
 
+<% @posts.each do |post| %>
+	<%= post.user_id %>
+	<%= post.content %>
+<% end %>
+
 <%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>
+<%= link_to 'New Post', %>
