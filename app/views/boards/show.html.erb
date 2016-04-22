@@ -1,15 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @board.name %>
-</p>
+<h1><%= @board.name %> Board</h1>
 
+<ul>
 <% @posts.each do |post| %>
-	<%= post.user_id %>
-	<%= post.content %>
+	<li>
+		<div class="well">
+			<p><%= post.content %></p>
+			<p><%= post.user.name %></p>
+		</p>
+	</li>
 <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>
-<%= link_to 'New Post', %>
+<%= form_tag(new_post_path, method: "get") do %>
+	<%= hidden_field_tag(:board_id, @board.id) %>
+	<%= submit_tag("Post New Comment") %>
+<% end %>

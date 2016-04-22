@@ -1,0 +1,13 @@
+<h1>New Post</h1>
+<%= link_to 'Back to Board', @board %>
+<%= form_for(@post) do |f| %>
+	<%= f.label :user_id %>
+	<%= f.text_field :user_id %><br/>
+	<%= f.label :content %>
+	<%= f.text_area :content %>
+	<%= f.hidden_field :board_id, value: @post.board_id %>
+	<%= f.hidden_field :rating, value: 0 %>
+	<%= f.submit "Create" %>
+<% end %>
+
+<%= params[:board_id] %>
